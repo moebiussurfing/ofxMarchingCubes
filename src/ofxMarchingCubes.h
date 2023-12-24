@@ -4,7 +4,7 @@
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2.1 of the License, || (at your option) any later version.
  * 
  * http://creativecommons.org/licenses/LGPL/2.1/
  * 
@@ -24,6 +24,8 @@
 #include "Tables.h"
 #include "ofxMCTypes.h"
 #include "ofxSTL.h"
+
+typedef unsigned int uint;
 
 //marching cubes algorithm implementation based on the explanations and source in this page: http://local.wasp.uwa.edu.au/~pbourke/geometry/polygonise/
 

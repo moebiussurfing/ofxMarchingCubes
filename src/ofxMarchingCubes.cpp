@@ -21,6 +21,8 @@
 
 #include "ofxMarchingCubes.h"
 
+//#define or ||
+
 ofxMarchingCubes::ofxMarchingCubes(){
 	
 }
@@ -164,7 +166,7 @@ void ofxMarchingCubes::addMetaBall(const glm::vec3& pos, float force){
 }
 
 void ofxMarchingCubes::setIsoValue(unsigned int gridX, unsigned int gridY, unsigned int gridZ, float value){
-	if(gridX >= gridResX or gridY >= gridResY or gridZ >= gridResZ){
+	if(gridX >= gridResX || gridY >= gridResY || gridZ >= gridResZ){
 		ofLog(OF_LOG_WARNING, "ofxMarchingCubes::setIsoValues - grid index out of bounds");
 		return;
 	}
@@ -172,7 +174,7 @@ void ofxMarchingCubes::setIsoValue(unsigned int gridX, unsigned int gridY, unsig
 }
 
 float ofxMarchingCubes::getIsoValue(unsigned int gridX, unsigned int gridY, unsigned int gridZ){
-	if(gridX >= gridResX or gridY >= gridResY or gridZ >= gridResZ){
+	if(gridX >= gridResX || gridY >= gridResY || gridZ >= gridResZ){
 		ofLog(OF_LOG_WARNING, "ofxMarchingCubes::getIsoValues - grid index out of bounds, returning zero");
 		return 0;
 	}
@@ -190,7 +192,7 @@ void ofxMarchingCubes::resetIsoValues(){
 }
 
 float ofxMarchingCubes::getMaxIsoValue(){
-	if(!gridResX or !gridResY or !gridResZ) return 0.0f;
+	if(!gridResX || !gridResY || !gridResZ) return 0.0f;
 	float max = isoValues[0][0][0];
 	float val;
 	for(int i=0; i<gridResX; ++i){
@@ -207,7 +209,7 @@ float ofxMarchingCubes::getMaxIsoValue(){
 }
 
 float ofxMarchingCubes::getMinIsoValue(){
-	if(!gridResX or !gridResY or !gridResZ) return 0.0f;
+	if(!gridResX || !gridResY || !gridResZ) return 0.0f;
 	float min = isoValues[0][0][0];
 	float val;
 	for(int i=0; i<gridResX; ++i){
@@ -224,7 +226,7 @@ float ofxMarchingCubes::getMinIsoValue(){
 }
 
 float ofxMarchingCubes::getAverageIsoValue(){
-	if(!gridResX or !gridResY or !gridResZ) return 0.0f;
+	if(!gridResX || !gridResY || !gridResZ) return 0.0f;
 	float avg = isoValues[0][0][0];
 	for(int i=0; i<gridResX; ++i){
 		for(int j=0; j<gridResY; ++j){
@@ -238,7 +240,7 @@ float ofxMarchingCubes::getAverageIsoValue(){
 }
 
 void ofxMarchingCubes::scaleIsoValues(float amount){
-	if(!gridResX or !gridResY or !gridResZ) return;
+	if(!gridResX || !gridResY || !gridResZ) return;
 	for(int i=0; i<gridResX; ++i){
 		for(int j=0; j<gridResY; ++j){
 			for(int k=0; k<gridResZ; ++k){
@@ -249,7 +251,7 @@ void ofxMarchingCubes::scaleIsoValues(float amount){
 }
 
 void ofxMarchingCubes::shiftIsoValues(float amount){
-	if(!gridResX or !gridResY or !gridResZ) return;
+	if(!gridResX || !gridResY || !gridResZ) return;
 	for(int i=0; i<gridResX; ++i){
 		for(int j=0; j<gridResY; ++j){
 			for(int k=0; k<gridResZ; ++k){
@@ -260,7 +262,7 @@ void ofxMarchingCubes::shiftIsoValues(float amount){
 }
 
 void ofxMarchingCubes::normalizeIsoValues(){
-	if(!gridResX or !gridResY or !gridResZ) return;
+	if(!gridResX || !gridResY || !gridResZ) return;
 	float min = getMinIsoValue();
 	if(min < 0.0f){
 		min = -min;
@@ -272,7 +274,7 @@ void ofxMarchingCubes::normalizeIsoValues(){
 }
 
 void ofxMarchingCubes::rescaleIsoValues(float min, float max){
-	if(!gridResX or !gridResY or !gridResZ) return;
+	if(!gridResX || !gridResY || !gridResZ) return;
 	min = MIN(min, max);
 	max = MAX(min, max);
 	float diff = max - min;
@@ -282,7 +284,7 @@ void ofxMarchingCubes::rescaleIsoValues(float min, float max){
 }
 
 void ofxMarchingCubes::absoluteValues(){
-	if(!gridResX or !gridResY or !gridResZ) return;
+	if(!gridResX || !gridResY || !gridResZ) return;
 	for(int i=0; i<gridResX; ++i){
 		for(int j=0; j<gridResY; ++j){
 			for(int k=1; k<gridResZ; ++k){
@@ -317,19 +319,19 @@ ofxMCGridPoints& ofxMarchingCubes::getGrid(){
 }
 
 void ofxMarchingCubes::setGridPos(const glm::vec3& _gridPos){
-	if(_gridPos.x == iniGridPos.x and _gridPos.y == iniGridPos.y and _gridPos.z == iniGridPos.z) return;
+	if(_gridPos.x == iniGridPos.x && _gridPos.y == iniGridPos.y && _gridPos.z == iniGridPos.z) return;
 	
 }
 
 void ofxMarchingCubes::setGridSize(const glm::vec3& _gridSize){
-	if(_gridSize.x == gridSize.x and _gridSize.y == gridSize.y and _gridSize.z == gridSize.z)return;
+	if(_gridSize.x == gridSize.x && _gridSize.y == gridSize.y && _gridSize.z == gridSize.z)return;
 	clear();
 	gridSize = _gridSize;
 	setupGrid();
 }
 
 void ofxMarchingCubes::setGridRes(unsigned int _gridResX, unsigned int _gridResY, unsigned int _gridResZ){
-	if(_gridResX == gridResX and _gridResY == gridResY and _gridResZ == gridResZ)return;
+	if(_gridResX == gridResX && _gridResY == gridResY && _gridResZ == gridResZ)return;
 	clear();
 	gridResX = MAX(2, _gridResX);
 	gridResY = MAX(2, _gridResY);
